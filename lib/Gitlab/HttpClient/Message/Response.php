@@ -1,9 +1,33 @@
-<?php namespace Gitlab\HttpClient\Message;
+<?php
+
+namespace Gitlab\HttpClient\Message;
 
 use Buzz\Message\Response as BaseResponse;
 
 class Response extends BaseResponse
 {
+    /**
+     * @var array pagination
+     * See PaginationListener
+     */
+    protected $pagination = array();
+
+    /**
+     * @return mixed
+     */
+    public function getPagination()
+    {
+        return $this->pagination;
+    }
+
+    /**
+     * @param array $pagination
+     */
+    public function setPagination(array $pagination)
+    {
+        $this->pagination = $pagination;
+    }
+
     /**
      * {@inheritDoc}
      */
